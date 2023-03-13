@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="input-group">
+        <button type="submit" name="login-btn">Login</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    // Add interactivity to the login form
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.querySelector('button[type="submit"]');
+
+    // Disable login button until both username and password fields are filled
+    loginBtn.disabled = true;
+    usernameInput.addEventListener('input', updateLoginBtnState);
+    passwordInput.addEventListener('input', updateLoginBtnState);
+
+    function updateLoginBtnState() {
+      if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+        loginBtn.disabled = false;
+      } else {
+        loginBtn.disabled = true;
+      }
+    }
+  </script>
+</body>
+</html>
+
